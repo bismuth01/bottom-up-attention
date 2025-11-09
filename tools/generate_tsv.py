@@ -41,27 +41,13 @@ MAX_BOXES = 100
 def load_image_ids(split_name):
     ''' Load a list of (path,image_id tuples). Modify this to suit your data locations. '''
     split = []
-    if split_name == 'flcikr30k_train':
-       with open('/home/23dcs510/dataset/tsv_train.json') as f:
+    if split_name == 'flickr30k_train':
+       with open('/home/23dcs510/dataset/tsv.json') as f:
         data = json.load(f)
         for item in data['images']:
             image_id = int(item['id'])
             filepath = os.path.join('/home/23dcs510/dataset/train/', item['file_name'])
             split.append((filepath, image_id))
-    elif split_name == 'flickr30k_val':
-      with open('/home/23dcs510/dataset/tsv_val.json') as f:
-        data = json.load(f)
-        for item in data['images']:
-          image_id = int(item['id'])
-          filepath = os.path.join('/home/23dcs510/dataset/val/', item['file_name'])
-          split.append((filepath,image_id))
-    elif split_name == 'flickr30k_test':
-      with open('/home/23dcs510/dataset/tsv_test.json') as f:
-        data = json.load(f)
-        for item in data['images']:
-          image_id = int(item['id'])
-          filepath = os.path.join('/home/23dcs510/dataset/test/', item['file_name'])
-          split.append((filepath,image_id)) 
     elif split_name == 'coco_test2014':
       with open('/data/coco/annotations/image_info_test2014.json') as f:
         data = json.load(f)
